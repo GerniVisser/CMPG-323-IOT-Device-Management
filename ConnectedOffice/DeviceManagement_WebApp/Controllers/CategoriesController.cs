@@ -77,6 +77,7 @@ namespace DeviceManagement_WebApp.Controllers
             {
                 return NotFound();
             }
+
             try
             {
                 _categoryRepository.Edit(category);
