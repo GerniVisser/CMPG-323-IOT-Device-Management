@@ -11,17 +11,18 @@ namespace DeviceManagement_WebApp.Repository
 {
     public class DeviceRepository : GenericRepository<Device>, IDeviceRepository
     {
-        private readonly ConnectedOfficeContext _context;
         public DeviceRepository(ConnectedOfficeContext context) : base(context)
         {
-            _context = context;
+
         }
 
+        // Had to override these functions to include Category and Zone
         public override async Task<IEnumerable<Device>> GetAll()
         {
             return await _context.Set<Device>().Include(d => d.Category).Include(d => d.Zone).ToListAsync();
         }
 
+        // Had to override these functions to include Category and Zone
         public override async Task<Device> FindById(Guid? id)
         {
             if (id == null) return null;

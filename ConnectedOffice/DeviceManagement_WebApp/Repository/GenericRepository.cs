@@ -25,6 +25,7 @@ namespace DeviceManagement_WebApp.Repository
             _context.SaveChanges();
         }
 
+        //Made virtual to alllow overrides in special cases 
         public virtual async Task<T> FindById(Guid? id)
         {
             if (id == null) return null;
@@ -32,6 +33,7 @@ namespace DeviceManagement_WebApp.Repository
             return await _context.Set<T>().FindAsync(id);
         }
 
+        //Made virtual to alllow overrides in special cases 
         public virtual async Task<IEnumerable<T>> GetAll()
         {
             return await _context.Set<T>().ToListAsync();
