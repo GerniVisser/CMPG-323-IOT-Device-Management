@@ -25,14 +25,14 @@ namespace DeviceManagement_WebApp.Repository
             _context.SaveChanges();
         }
 
-        public async Task<T> FindById(Guid? id)
+        public virtual async Task<T> FindById(Guid? id)
         {
             if (id == null) return null;
 
             return await _context.Set<T>().FindAsync(id);
         }
 
-        public async Task<IEnumerable<T>> GetAll()
+        public virtual async Task<IEnumerable<T>> GetAll()
         {
             return await _context.Set<T>().ToListAsync();
         }
